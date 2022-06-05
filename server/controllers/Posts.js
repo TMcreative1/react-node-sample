@@ -20,9 +20,9 @@ export const getPosts = async (req, res) => {
 };
 
 export const updatePost = async (req, res) => {
-    const allowedOptions = ['title', 'content', 'tags', 'author'];
+    const allowedOptions = ['title', 'author', 'article'];
     const selectedOption = Object.keys(req.body);
-    const doesExists = selectedOption.every((opt) => allowedOptions.includes(opt));
+    const doesExists = selectedOption.some((opt) => allowedOptions.includes(opt));
 
     if (!doesExists) {
         return res.status(404).json({ success: false });
